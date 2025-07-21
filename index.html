@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Breaking Rectangular Shackles: Cross-View Object Segmentation for Fine-Grained Object Geo-Localization">
+  <meta name="keywords" content="CVOS, TROGeo, Cross-view">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Breaking Rectangular Shackles: Cross-View Object Segmentation for Fine-Grained Object Geo-Localization</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+ 
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/zqw.jpg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Breaking Rectangular Shackles: Cross-View Object Segmentation for Fine-Grained Object Geo-Localization</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=-kUCuFYAAAAJ&hl=zh-CN">Qingwang Zhang</a>,</span>
+            <span class="author-block">
+              <a href="https://csse.szu.edu.cn/pages/user/index?id=593">Yingying Zhu</a><sup>*</sup>,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">College of Computer Science and Software Engineering, Shenzhen University, Shenzhen, China</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Dataset (Coming Soon)</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/task.jpg"
+          class="interpolation-image"/>
+      <h2 class="subtitle has-text-centered">
+        Illustration of the cross-view object geo-localization task and comparison of different solutions.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          </p>
+          This paper addresses the limitations of existing cross-view object geo-localization schemes, which rely on rectangular proposals to localize irregular objects in satellite imagery. These ``rectangular shackles" inherently struggle to precisely define objects with complex geometries, leading to incomplete coverage or erroneous localization. We propose a novel scheme, cross-view object segmentation (CVOS), which achieves fine-grained geo-localization by predicting pixel-level segmentation masks of query objects. CVOS enables accurate extraction of object shapes, sizes, and areas—critical for applications like urban planning and agricultural monitoring.
+          We also created the CVOGL-Seg dataset specifically to support and evaluate CVOS.
+          To tackle CVOS challenges, we introduce Transformer Object Geo-localization (TROGeo), a two-stage framework.
+          First, the Heterogeneous Task Training Stage (HTTS) employs a single transformer encoder with a Cross-View Object Perception Module (CVOPM) and is trained by learning a heterogeneous task.
+          Second, the SAM Prompt Stage (SPS) utilizes SAM’s zero-shot segmentation capability, guided by HTTS outputs, to generate precise masks.
+          We extensively evaluate our method on CVOGL and CVOGL-Seg datasets and demonstrate state-of-the-art performance compared to existing models.
+          Our work demonstrates that CVOS breaks the rectangular shackles and unlocks new potential for fine-grained object geo-localization.
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Transformer Object Geo-localization (TROGeo)</h2>
+
+        <h3 class="title is-4">Overview</h3>
+        <div class="content has-text-justified">
+          <p>
+            An overview of the proposed TROGeo framework, consisting of (a) Heterogeneous Task Training Stage (HTTS) and (b) SAM Prompt Stage (SPS).
+          </p>
+        </div>
+        <img src="./static/images/overall.jpg" class="interpolation-image"/>
+        
+        <h3 class="title is-4">Cross-View Object Perception Module (CVOPM)</h3>
+        <div class="content has-text-justified">
+          <p>
+            Human perception provides a key insight: when searching for cross-view object localization cues, observers consciously integrate the object and its semantic context (e.g., road layout, neighboring buildings).
+            Inspired by <a href="https://github.com/CompVis/latent-diffusion">LDM</a>.
+          </p>
+        </div>
+        <div style="text-align: center;">
+          <img src="./static/images/CVOPM.jpg" class="interpolation-image" width="50%"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+
+        <h3 class="title is-4">Rectangular Shackles: Defining Geographic Locations of Objects Using Rectangular Regions.</h3>
+        <div class="content has-text-justified">
+          <p>
+            Comparison with previous works on the CVOGL dataset. “w/o OST” and “w OST” refer to whether Object Segmentation Task (OST) is learned in TROGeo’s HTTS. Bold indicates the best result.
+          </p>
+        </div>
+        <img src="./static/images/CVOGL.png" class="interpolation-image"/>
+        
+        <h3 class="title is-4">Breaking Rectangle Shackles: Defining Geographic Locations of Objects Using Segmentation Masks.</h3>
+        <div class="content has-text-justified">
+          <p>
+            Comparison with previous works on the CVOGL-Seg dataset. “+ SPS” means that our SAM Prompt Stage (SPS) is added to obtain the segmentation mask using the original rectangular region output as a prompt.
+          </p>
+        </div>
+        <img src="./static/images/CVOGL-Seg.png" class="interpolation-image"/>
+
+        <h3 class="title is-4">Qualitative Analysis</h3>
+        <div class="content has-text-justified">
+          <p>
+            
+          </p>
+        </div>
+        <img src="./static/images/mask-compare.jpg" class="interpolation-image"/>
+
+        <h3 class="title is-4">Ablation Studies</h3>
+        <div class="content has-text-justified">
+          <p>
+            
+          </p>
+        </div>
+        <img src="./static/images/ablation_study.jpg" class="interpolation-image"/>
+
+      </div>
+    </div>
+
+    <!-- Concurrent Work. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <!-- <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div> -->
+</section>
+
+
+<!-- <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+</body>
+</html>
